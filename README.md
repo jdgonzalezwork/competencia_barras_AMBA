@@ -18,14 +18,24 @@ quedaría sobredimensionado en las regiones con mayor número de individuos en s
 1. En CABA: Datos de población al 2017, extraído de https://data.buenosaires.gob.ar/dataset/estructura-demografica/archivo/a24fc775-ad6e-4bb0-8a7a-2283c2adea34
 
 
-## Visualizacion 
-Esta visualizacion esta basada en una publicación previa: 
+## Visualización 
 
+### Confirmados cada cien mil habitantes 
+El siguiente gif muestra las regiones con mayor relacion de infectados cada cien mil habitantes a lo largo del tiempo.
+
+![](https://github.com/jdgonzalezwork/competencia_barras_AMBA/blob/master/videoOutput/confirmadosAMBA.gif)
+
+### Muertes cada cien mil habitantes
+El siguiente gif muestra las regiones con mayor relacion de muertes cada cien mil habitantes a lo largo del tiempo.
+
+![](https://github.com/jdgonzalezwork/competencia_barras_AMBA/blob/master/videoOutput/muertesAMBATop10.gif)
+
+
+Esta visualizacion esta basada en una publicación previa: 
 [towardsdatscience](https://towardsdatascience.com/create-animated-bar-charts-using-r-31d09e5841da) 
 
 ## Otras visualizaciones
-Esta visualizacion forma parte de un conjunto de herramientas de visualización de datos de covid19, desarrollados 
-por investigadores de distintas Universidades Nacionales y del Instituto de Cálculo.
+Esta visualizacion forma parte de un conjunto de herramientas de visualización de datos de covid19, desarrollados por investigadores de distintas Universidades Nacionales y del Instituto de Cálculo.
  
 http://www.ic.fcen.uba.ar/noticias/herramientas-de-visualizacion-de-datos-de-covid19
 

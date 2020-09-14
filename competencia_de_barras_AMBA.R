@@ -175,7 +175,7 @@ anim = staticplot + transition_states(fecha, transition_length = 4, state_length
        exit_fade() 
 
 animacion=animate(anim,nframes=500)
-#anim_save("animacionConfirmadosAMBA.gif", animation = animacion)
+anim_save("animacionConfirmadosAMBA.gif", animation = animacion)
 
 
 
