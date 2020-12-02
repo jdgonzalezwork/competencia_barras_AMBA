@@ -27,7 +27,7 @@ La siguiente animación muestra las regiones con mayor relación de infectados c
 ### Muertes cada cien mil habitantes
 La siguiente animación muestra las regiones con mayor relación de muertes cada cien mil habitantes a lo largo del tiempo.
 
-![](https://github.com/jdgonzalezwork/competencia_barras_AMBA/blob/master/videoOutput/muertesAMBATop10.gif)
+![](https://github.com/jdgonzalezwork/competencia_barras_AMBA/blob/master/videoOutput/muertesAMBA.gif)
 
 
 Esta visualización esta basada en una publicación previa, [towardsdatscience](https://towardsdatascience.com/create-animated-bar-charts-using-r-31d09e5841da) 
