@@ -12,12 +12,16 @@ rm(list=ls())
 #file1="Covid19Casos_28_06_2020.csv"
 #file1="Covid19Casos_06_sep.csv"
 #file1="Covid19Casos_13_sep.csv"
+#file1="Covid19Casos_9_10.csv"
+#file1="Covid19Casos_30_11.csv"
 #valores=read.csv2(file1,sep=",",stringsAsFactors = F,encoding="UTF-8")
 #save.image(file="datosCrudos13_sep_2020.RData")
+#save.image(file="datosCrudos9_oct_2020.RData")
+#save.image(file="datosCrudos30_nov_2020.RData")
 ########################################################
 #######################################################
 
-load("datosCrudos13_sep_2020.RData")
+load("datosCrudos30_nov_2020.RData")
 library(dplyr)
 library(lubridate)
 library(ggplot2)
@@ -282,10 +286,10 @@ casosTotalesCheck=sum(datos_ordenados$totales_por_dia)
 casosTotalesCheck0==casosTotalesCheck 
 muertesTotalesCheck=sum(datos_ordenados$muertes_totales_por_dia)
 muertesTotalesCheck0=muertesTotalesCheck
-save(file="datos_ordenados_13_09_2020.RData",datos_ordenados)
+save(file="datos_ordenados_9_10_2020.RData",datos_ordenados)
 
 
 # test=grepl(datos_ordenados$departamento, pattern="COMUNA")
-# datCABA= datos_ordenados[test,]; 
+#  datCABA= datos_ordenados[test,]; 
 # ggplot(datCABA,aes(x=semana,y= 1e+6*muertestotales/pob, color=departamento))+geom_line()
 

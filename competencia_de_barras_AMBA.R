@@ -1,11 +1,16 @@
 rm(list=ls())
-load("datos_ordenados_13_09_2020.RData")
+load("datos_ordenados_30_11_2020.RData")
 library(tidyr)
 library(dplyr)
 library(ggplot2)
 library(gganimate)
 names(datos_ordenados)
 source("myfunctions.R")
+max(datos_ordenados$fecha)
+
+
+
+
 
 # datos_ordenados 
 ## "departamento":
@@ -96,33 +101,39 @@ AMBA=c("CABA","Almirante Brown","Avellaneda","Berazategui","Berisso",
 
 datAMBA_original=datos_ordenados%>%filter(departamento %in% AMBA)
 
-#saco los ultimos 3 dias por temas la base no esta actualizada a esa fecha. 
-fechaUltima=(max(datAMBA_original$fecha))
-semana_ultima=max(datAMBA_original$nro_semana)-1		
-
-datAMBA_original=datAMBA_original%>%filter(fecha<=fechaUltima)
-datAMBA_original=datAMBA_original%>%group_by(departamento)%>%mutate(casos_acumulados_cada_cienmilhab=100*casos_por_1000hab,
-                                                                    casos_acumulados_normalizados=totales_acum/max(totales_acum))
-#                                                                    derivada=derivar(casos_acumulados_cada_cienmilhab,lag=5),
-#                                                                    derivada2=derivar(derivada,lag=5))
+#(lubridate::year(datos_ordenados$fecha)<2020)%>%sum()
+#datAMBA_original%>%
+#                mutate(yy=lubridate::year(fecha))%>%
+#                filter(yy<2020)%>%View()
 
 
 
-
-
-
-
-######### cosas para testear. 
-fechtest="2020-04-23";
-#max(datAMBA_original$fecha-10)
-#datAMBA_original<-datAMBA_original%>%filter(fecha==fechtest)
-#ranked_by_year=datAMBA_original%>%filter(fecha>fechtest)%>%ungroup()%>%group_by(fecha)%>%
-
-###################################################
-###############CASOS CONFIRMADOS#############################
-###################################################
-
-
+  #saco los ultimos 3 dias por temas la base no esta actualizada a esa fecha. 
+  fechaUltima=(max(datAMBA_original$fecha))
+  semana_ultima=max(datAMBA_original$nro_semana)-1		
+  
+  datAMBA_original=datAMBA_original%>%filter(fecha<=fechaUltima)
+  datAMBA_original=datAMBA_original%>%group_by(departamento)%>%mutate(casos_acumulados_cada_cienmilhab=100*casos_por_1000hab,
+                                                                      casos_acumulados_normalizados=totales_acum/max(totales_acum))
+  #                                                                    derivada=derivar(casos_acumulados_cada_cienmilhab,lag=5),
+  #                                                                    derivada2=derivar(derivada,lag=5))
+  
+  
+  
+  
+  
+  
+  
+  ######### cosas para testear. 
+  fechtest="2020-04-23";
+  #max(datAMBA_original$fecha-10)
+  #datAMBA_original<-datAMBA_original%>%filter(fecha==fechtest)
+  #ranked_by_year=datAMBA_original%>%filter(fecha>fechtest)%>%ungroup()%>%group_by(fecha)%>%
+  
+  ###################################################
+  ###############CASOS CONFIRMADOS#############################
+  ###################################################
+  
 
 
 ranked_by_year=datAMBA_original%>%ungroup()%>%group_by(fecha)%>%
@@ -131,6 +142,7 @@ ranked_by_year=datAMBA_original%>%ungroup()%>%group_by(fecha)%>%
   filter(rank<=10)%>%mutate(value=casos_acumulados_cada_cienmilhab,
                             Value_rel = value/value[rank==1],
                             Value_lbl = paste0(" ",round(value)))
+  
 
 staticplot = ggplot(ranked_by_year, aes(rank, group = departamento, 
                                        fill = as.factor(departamento), color = as.factor(departamento))) +
@@ -165,6 +177,7 @@ my_theme=theme(axis.line=element_blank(),
 
 staticplot=staticplot+my_theme #+ labs0
 
+
 anim = staticplot + transition_states(fecha, transition_length = 4, state_length = 1) +
   view_follow(fixed_x = TRUE)  +
   labs(title = 'Confirmados acumulados cada cien mil Hab.',  
@@ -174,7 +187,7 @@ anim = staticplot + transition_states(fecha, transition_length = 4, state_length
        enter_fade() +
        exit_fade() 
 
-animacion=animate(anim,nframes=500)
+animacion=animate(anim,nframes=600)
 anim_save("animacionConfirmadosAMBA.gif", animation = animacion)
 
 
@@ -247,7 +260,8 @@ anim = staticplot + transition_states(fecha, transition_length = 4, state_length
   enter_fade() +
   exit_fade() 
 
-animacion=animate(anim,nframes=500)
+
+animacion=animate(anim,nframes=600)
 anim_save("animacionMuertesAMBA.gif", animation = animacion)
 #animacionConfirmadosAMBA
 # 
